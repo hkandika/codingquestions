@@ -28,6 +28,8 @@ public class ReverseLinkedListBetweenNodes {
 		LinkedList three = new LinkedList(3);
 		LinkedList four = new LinkedList(4);
 		LinkedList five = new LinkedList(5);
+		
+		//testcase 1
 		one.next =two;
 		two.next = three;
 		three.next = four;
@@ -35,9 +37,19 @@ public class ReverseLinkedListBetweenNodes {
 		print("Output: " , reverseBetween(one, 2 ,4)); //reverse list from second to 4th element
 		System.out.println();
 
+		//testcase 2
+		one.next =two;
+		two.next = three;
+		three.next = four;
+		four.next = five;
 		print("Output: " , reverseBetween(one, 2 ,2)); //nothing to reverse as start and end are same
 		System.out.println();
 		
+		//testcase 3
+		one.next =two;
+		two.next = three;
+		three.next = four;
+		four.next = five;
 		print("Output: " , reverseBetween(one, 1 ,5)); //reverse whole list
 		System.out.println();
 	}
@@ -57,24 +69,20 @@ public class ReverseLinkedListBetweenNodes {
         LinkedList reversingList =  null;
         LinkedList result =  null;
         int i=1;
-        if (startIdx == endIdx) {
-        	reversingList = head;
-        } else {
-            while (node != null) {
-                if (startIdx == i) {
-                    listBeforeStartIdx = prev;
-                    if (listBeforeStartIdx != null) {
-                        listBeforeStartIdx.next = null;
-                    }
-                    reversingList = node;
-                } else if (endIdx == i) {
-                    listAfterEndIdx = node.next;
-                    node.next = null;
+        while (node != null) {
+            if (startIdx == i) {
+                listBeforeStartIdx = prev;
+                if (listBeforeStartIdx != null) {
+                    listBeforeStartIdx.next = null;
                 }
-                prev = node;
-                node = node.next;
-                i++;
+                reversingList = node;
+            } else if (endIdx == i) {
+                listAfterEndIdx = node.next;
+                node.next = null;
             }
+            prev = node;
+            node = node.next;
+            i++;
         }
         print("listBeforeStartIdx: ", listBeforeStartIdx);
         print("listAfterEndIdx: ", listAfterEndIdx);

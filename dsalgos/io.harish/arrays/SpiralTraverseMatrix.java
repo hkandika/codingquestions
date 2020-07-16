@@ -5,6 +5,11 @@ import java.util.List;
 /**
  *  Spiral Traversal of a matrix
  *  
+ *  
+ *  Complexity: O(MN) time | O(MN) space
+ *              M - rowSize, N - ColumnSize
+ *              space is MN because we are storing elements to a list, if we just print then it is O(1)
+ *  
  * @author harish
  *
  */
