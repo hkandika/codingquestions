@@ -5,6 +5,26 @@ import java.util.List;
 /**
  *  Spiral Traversal of a matrix
  *  
+ *  We need 4 pointers startRow, endRow, startCol and endCol
+ *  
+ *  		SC				EC
+ *   		-----------------
+ *   SR		|   SC     EC    |
+ *   		|     --------   |
+ *   		| SR  |      |   | 
+ *   		|     |      |   |
+ *   		| ER  --------   |
+ *  ER 		|                |
+ *   		-----------------
+ *  Traversal - 
+ *  			Left   -> Right   : Explore all elements at row SR from SC to EC.  A[SR][SC++] till SC <= EC
+ *    			Top    -> Bottom  : Explore all elements at col EC from SR = SR + 1 (as [SR][EC] already explored in L -> R loop) to ER.  A[SR++][EC] till SR <= ER
+ *    			Right  -> Left	  : Explore all elements at row ER from EC = EC - 1 (as [ER][EC] already explored in T -> B loop) to EC.  A[ER][EC--] till EC >= SC
+ *    			Bottom -> Top  	  : Explore all elements at col SC from SR = SR - 1 (as [ER][SC] already explored in R -> L loop) to ER.  A[SR--][SC] till ER >= SR - 1 (top already already explored so we want skip that)
+ *  
+ *  Once finishing one cycle of traversal of all directions, 
+ *  do EC--, ER--, SR++, EC++  so they point to next inner matrix
+ *  Loop exits when following condition does not satisfy SR<=ER && SC<=EC, at this we have already explored all elements spirally
  *  
  *  Complexity: O(MN) time | O(MN) space
  *              M - rowSize, N - ColumnSize
