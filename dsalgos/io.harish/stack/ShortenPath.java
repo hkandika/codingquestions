@@ -12,6 +12,7 @@ import java.util.stream.*;
  * Input: /sam/../dam/../dam/../sam//lol/./caz
  * 
  * Output: /sam/lol/caz
+ * Complexity: O()
  * 
  * @author harish
  *
@@ -27,6 +28,7 @@ public class ShortenPath {
 		System.out.println(shortenPath("sam/dam/./././cam/./ram"));//      sam/dam/cam/ram
 
 	}
+	
 	public static String shortenPath(String path) {
 		boolean isAbsPath = path.startsWith("/");
 		String [] tokens = path.split("/");
